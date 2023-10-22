@@ -5,5 +5,5 @@ void main()
     short int i=0111;
     char c=111;
     k=k+c+i;
-    printf("%d",c);
+    printf("%d",k);
 }

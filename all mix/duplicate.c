@@ -2,25 +2,30 @@
 #include<string.h>
 void main()
 {
-    char s[100]="aaaaaaakkkrp";
+    char s[100]="aaaaaaakkkrrrp";
     int i,j,l,f,m;
-    //char f[10];
+    char ch;
 int ele=strlen(s);
-
-        for(j=0;s[j];j++)
+for(i=0;i<ele;i++)
+{
+        for(j=i+1;j<ele;j++)
         {
-            if(s[j]==s[j+1])
+            if(s[i]==s[j])
             {
-                s[j]=s[j+1];
-                //a=*(char*)s[i];
-                for(l=j;s[l];l++)
-                {
-                    s[l]=s[l+1];
-                }
-                j--;
-                
+                ch=s[i];
+                break;
             }
         }
 
+        if(ch==s[i])
+        {
+            for(l=i;l<ele;l++)
+            {
+                s[l]=s[l+1];
+            }
+            i--;
+        }
+        ele--;
+}
     printf("%s\n",s);
 }
