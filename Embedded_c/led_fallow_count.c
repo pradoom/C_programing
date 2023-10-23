@@ -18,7 +18,7 @@ int main()
 			{
 				c=0;
 			}
-			  IOSET0=7<<17;//active low
+			        IOSET0=7<<17;//active low
 				IOCLR0=c<<17;//active low
 			
 				//IOCLR0=7<<17;//active High
