@@ -82,12 +82,69 @@
 
 
 
-#define SWAP(dtype,x,y) { dtype t; t=x+y, x=t-x, y=t-y; }
+// #define SWAP(dtype,x,y) { dtype t; t=x+y, x=t-x, y=t-y; }
+// int main(void)
+// {
+// int a=1, b=2, x=3, y=4, s=25, t=26;
+// SWAP (int, a, b)
+// SWAP(int,x,y)
+// SWAP (int, s, t)
+// printf("a=%d, b=%d, x=%d, y=%d, s=%d, t=%d\n",a,b,x,y,s,t);
+// }
+
+
+
+// #define y 10
+// int main(void)
+// {
+// #if (x||y && z)
+// printf("Sea in Depth\n");
+// #else
+// printf("See in depth %d\n",x);
+// #endif
+// return 0;
+// }
+
+
+
+// #define PRINT1(message) printf(message)
+// #define PRINT2(message) printf("message")
+// #define PRINT3(message) printf(#message)
+// int main(void)
+// {
+// PRINT1("If we rest, we rust.\n");
+// PRINT2("Attack life, its going to kill you anyways.\n");
+// PRINT3("Well done is better than well said.\n");
+// return 0;
+// }
+
+
+
+
+// #define show(value) printf (#value"=%d\n" ,value);
+// int main(void)
+// {
+// int a=10,b=5,c=4;
+// show(a/b*c);
+// return 0;
+// }
+
+
+
+
+
+
+#define MACRO(a) if(a<=5) printf(#a"=%d\n",a);
 int main(void)
 {
-int a=1, b=2, x=3, y=4, s=25, t=26;
-SWAP (int, a, b)
-SWAP(int,x,y)
-SWAP (int, s, t)
-printf("a=%d, b=%d, x=%d, y=%d, s=%d, t=%d\n",a,b,x,y,s,t);
+int x=6, y=15;
+if (x<=y)
+MACRO(x)
+//if(x<=5) printf("=%d\n",x);
+else
+MACRO(y)
+return 0;
 }
+
+
+
