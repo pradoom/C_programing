@@ -26,7 +26,7 @@ int main()
     
     if (sum==i)
     {
-           printf("%d\n",i);
+        printf("%d\n",i);
     }
     
  }

@@ -1,7 +1,7 @@
 #include<stdio.h>
 void main()
 {
-    int a[]={0,0,0,3,0,5,0,3};
+    int a[]={0,0,0,8,7,0,3,0,5,0,3};
     int ele=sizeof(a)/sizeof(a[0]);
     int i,j;
 for(j=0;j<ele-1;j++)

@@ -1,0 +1,14 @@
+BTech / MTech in any field of electronic or electrical engineering or allied field such as Computer Science, etc.
+Hands-on experience with DIY projects in academia / personal projects / company.
+
+Experience in hands-on development and troubleshooting on embedded targets (Arduino, Raspberry Pi, etc.)
+Hands-on experience with interfacing embedded targets such as - micro controllers (Arduino, STM, Raspberry Pi),
+motors (DC, Stepper, Servo, BLDC), encoders (optical, absolute, incremental, inductive), motor drivers, ESCs.
+
+Experience and knowledge of communication protocols such as SPI, I2C, CAN, UART,
+As well as knowledge of control algorithms such as PID and LCQ.
+
+Strong fundamentals and experience with C/C++ is a must.
+
+Adequate knowledge of reading schematics and data sheets for components
+Experience with PCB Design tools like Autodesk Eagle, KiCAD, Altium etc.

@@ -22,7 +22,7 @@ int rec_fun_prime(int num)
         f=0;
     }
     i=i+1;
-    if(i<num)
+    if(i<num&&f!=0)
     rec_fun_prime(num);
 
     return f;

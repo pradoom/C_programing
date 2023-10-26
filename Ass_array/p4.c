@@ -10,33 +10,27 @@ void main()
     for(i=0;i<n;i++)
         scanf("%d",&a[i]);
 
-
-for(i=0;i<n;i++)
-{
-printf(" enter elements%d\n",a[i]);
-}
-printf("\n");
 /////////////////////////logic//////////////////////////////
-int c;
+
 for(i=0;i<n;i++)
 {
     for(j=i+1;j<n;j++)
     {
-        c=1;
+       
         if(a[i]==a[j])
         {
-            c++;
+            
             for( k=j;k<n;k++)
             {
                 a[k]=a[k+1];
             }
-            n--;
-            --j;
+            n--;//size 
+            --j;//go back and check
         }
     }
 }
 
-printf("%d\n",c);
+
 
 
 

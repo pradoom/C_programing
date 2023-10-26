@@ -38,18 +38,25 @@ void laternate(char *s1,char *s2,char*d)
 
     if(str1>str2)
     {
+        int l;
         int r=strlen(d);
-        for(q=r-1;q<r;q++)
+        
+        for( l=0;d[l];l++);//finding string length
+
+
+       // printf("r=%d l=%d\n",r,l);
+        for(q=l-1;q<30;q++)
         {
-            d[q]=s1[++k];
-            
+            d[q]=s1[k];
+            k++;
         }
     }
     else
     {
-        int p=strlen(d);
-        
-        for(q=p-1;q<p;q++)
+        int p;
+        for( p=0;d[p];p++);
+        //printf("r=%d l=%d\n",r,l);
+        for(q=p-1;q<30;q++)
         {
             d[q]=s2[k];
             k++;

@@ -1,5 +1,5 @@
 #include<stdio.h>
-int rev_fun_sum(int num);
+int rev_fun_sum(int num);//first 3 digite sum
 void main()
 {
     int num=12345;

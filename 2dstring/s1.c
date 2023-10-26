@@ -7,5 +7,5 @@ void main()
 
     //printf("%c",++s[0][0]);//i
 
-    printf("%s",&s[0]+2);
+    printf("%s",s[1]+2);
 }

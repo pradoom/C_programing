@@ -10,7 +10,7 @@ void main()
             c++;
         }
     }
-    printf("%d",c);
+    printf("%d",c+1);
 
 
 }

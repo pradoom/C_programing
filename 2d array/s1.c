@@ -15,7 +15,7 @@ int main()
             scanf("%d",&a[i][j]);
         }
     }
-
+fun(r,c,a);
 
     for(i=0;i<r;i++)
     {

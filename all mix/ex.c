@@ -4,7 +4,7 @@ void main()
 {
     char *s="hello";
 
-    str_cat(&s[0]);
+    str_cat(&s);
 
     printf("%s ",s);
 }
@@ -12,5 +12,5 @@ void main()
 void str_cat(char**s)
 {
 
-    *s="a";
+    *s='a';
 }

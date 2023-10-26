@@ -10,7 +10,7 @@ void main()
     printf("%s \n",&s+1);//--------------> dP@
     printf("%s \n",&s);//--------------> Hello
     printf("%s\n",s[0]+1);//no output
-    printf("%s\n",&s[0]);//no output
+    printf("%s\n",&s[0]);//--------------> Hello
     printf("%s\n",s[1]+1);//no output
 
     //pointer

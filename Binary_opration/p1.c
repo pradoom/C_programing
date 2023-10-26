@@ -15,7 +15,7 @@ void main()
     printf("\n");
 
 
-    for(k=0,j=k+1;k<=31;k++)
+    for(k=0,j=31;k<j;k++,j--)
     {
         int m,n;
         m=a>>k&1;

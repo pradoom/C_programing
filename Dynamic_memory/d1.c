@@ -72,7 +72,10 @@ void main()
 void fun(int**p,int r,int c)
 {
     int i,j;
-        for(i=0;i<r;i++)
+
+   // p[0][1]=34;
+
+    for(i=0;i<r;i++)
     {
         for(j=0;j<c;j++)
         {
