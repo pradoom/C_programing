@@ -11,12 +11,16 @@ typedef struct student
 
 void add_begin(sll**);
 void printf_data(sll*);
+int count_node(sll*);
+void file_save(sll*);
+
+
 void main()
 {
     sll *headptr=0;
     int op;
 
-
+    int cou_node=0;
 while(1)
 {
     printf("Enter option new node\n");
@@ -25,7 +29,9 @@ while(1)
     {
         case 1 :add_begin(&headptr);break;
         case 2 :printf_data(headptr);break;
-        case 3 :exit(0);
+        case 3 : cou_node=count_node(headptr);printf(" Count = %d\n",cou_node);break;
+        case 4 :file_save(headptr);break;
+        case 5 :exit(0);
         default:printf("Wrong input..\n");
     }
 }
@@ -62,4 +68,40 @@ void printf_data(sll *p)
         printf("rollno= %d name=%s\n",p->roll,p->name);
         p=p->next;//visite next node
     }
+}
+
+int count_node(sll *p)
+{
+    if(p==0)
+    {
+        printf("No node present..\n");
+        return;
+    }
+    int c=0;
+    while(p)
+    {
+        c++;
+        p=p->next;//visite next node 
+    }
+
+    return c;
+}
+
+
+
+void file_save(sll*p)
+{
+    if(p==0)
+    {
+        printf("No records");
+    }
+
+    FILE *f=fopen("t1.txt","w");
+
+    while(p)                                //travel or read data from all nodes till end
+    {
+        fprintf(f,"%d %s ",p->roll,p->name);//put data in file after enternig data
+        p=p->next;                         //every time move to next node
+    }
+     fclose(f);
 }
