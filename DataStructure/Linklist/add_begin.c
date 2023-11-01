@@ -13,6 +13,7 @@ void add_begin(sll**);
 void printf_data(sll*);
 int count_node(sll*);
 void file_save(sll*);
+void add_mid(sll**);
 
 
 void main()
@@ -31,7 +32,8 @@ while(1)
         case 2 :printf_data(headptr);break;
         case 3 : cou_node=count_node(headptr);printf(" Count = %d\n",cou_node);break;
         case 4 :file_save(headptr);break;
-        case 5 :exit(0);
+        case 5 :add_mid(&headptr);break;
+        case 6 :exit(0);
         default:printf("Wrong input..\n");
     }
 }
@@ -104,4 +106,30 @@ void file_save(sll*p)
         p=p->next;                         //every time move to next node
     }
      fclose(f);
+}
+
+
+void add_mid(sll**p)
+{
+    sll *new,*des;
+    new=malloc(sizeof(sll));
+    printf("Enter rollno and name..\n");
+    scanf("%d %s",&new->roll,new->name);
+
+    if(*p==0   ||   (new->roll<(*p)->roll))
+    {
+         new->next=*p;
+         *p=new;
+    }
+    else
+    {
+        des=*p;
+        while((des->next!=0)&&(new->roll>des->next->roll))
+        {
+            des=des->next;
+        }
+        new->next=des->next;
+        des->next=new;
+    }
+
 }
