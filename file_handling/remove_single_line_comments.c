@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+//delete line having single line comment
 void main(int argc,char**argv)
 {
     FILE *f=fopen(argv[1],"r+");
