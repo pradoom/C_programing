@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define pf printf
 #define sf scanf
+//copy string
 void my_str_cpy(char *p, char *d, int n)
 {
     static int i = 0;
@@ -10,10 +11,11 @@ void my_str_cpy(char *p, char *d, int n)
     if (i < n)
         my_str_cpy(p, d, n);
 }
+
 int my_str_cop(char *, char *, int);
 
 // Locate string
-char *my_str_chr(char *p, char ch)
+char *my_str_chr(char *p, char ch)//returning address there for *my_str_chr
 {
     if (*p == ch)
     {
@@ -51,7 +53,7 @@ void main()
     // else
     //     pf("found \n");
 }
-
+//copy string
 int my_str_cop(char *s1, char *s2, int n)
 {
 
