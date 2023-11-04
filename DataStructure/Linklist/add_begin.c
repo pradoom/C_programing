@@ -1,140 +1,164 @@
+
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<string.h>
 typedef struct student
 {
     int roll;
-    char name[10];
+    char name[20];
+    float marks;
     struct student *next;
 }sll;
 
-
 void add_begin(sll**);
-void printf_data(sll*);
+void add_end(sll**);
+void add_middle(sll**);
+void print_node(sll*);
 int count_node(sll*);
-void file_save(sll*);
-void add_mid(sll**);
 void read_file(sll**);
-
-
-void main()
+void file_save(sll*);
+void delete_all(sll**);
+int main()
 {
-    sll *headptr=0;
     int op;
-
-    int cou_node=0;
-while(1)
+    sll *headptr=0;
+    while(1)
 {
-    printf("Enter option new node\n");
+    printf("Enter opteion 1)add_begin 2)add_end 3)add_middle 4)print 5)count_node 7)delete_all\n");
     scanf("%d",&op);
     switch(op)
     {
-        case 1 :add_begin(&headptr);break;
-        case 2 :printf_data(headptr);break;
-        case 3 : cou_node=count_node(headptr);printf(" Count = %d\n",cou_node);break;
-        case 4 :file_save(headptr);break;
-        case 5 :add_mid(&headptr);break;
-        case 6 :read_file(&headptr);break;
-        case 7 :delete_all(&headptr);break;
-        case 8 :exit(0);
-        default:printf("Wrong input..\n");
+        case 1:add_begin(&headptr);break;
+        case 2:add_end(&headptr);break;
+        case 3:add_middle(&headptr);break;
+        case 4:print_node(headptr);break;
+        case 5:int a=count_node(headptr);printf("Count:%d\n",a);break;
+        case 6:read_file(&headptr);break;
+        case 7:file_save(headptr);break;
+        case 9:delete_all(&headptr);
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:exit(0);
+        
+        default:printf("Wrong input\n");
+        
+        
     }
-}
-
-}
-
-
-
-void add_begin(sll **p)
-{
-    sll *new=malloc(sizeof(struct student));//point to new node
-    printf("Enter rollno and name..\n");
-    scanf("%d %s",&new->roll,new->name);
     
-    new->next=*p;//update newely created node address
-
-    *p=new;      //assign new address to ptr
-
+}
 }
 
-void printf_data(sll *p)
+void add_begin(sll **ptr)
 {
-    /*
-    here we have taken new pointer for printing nods value.
-    it will move next by next link address and printf the node data
-    */
-    if(p==0)
-    {
-        printf("No node present..\n");
-    }
-
-    while(p)
-    {
-        printf("rollno= %d name=%s\n",p->roll,p->name);
-        p=p->next;//visite next node
-    }
-}
-
-int count_node(sll *p)
-{
-    if(p==0)
-    {
-        printf("No node present..\n");
-        return 0;
-    }
-    int c=0;
-    while(p)
-    {
-        c++;
-        p=p->next;//visite next node 
-    }
-
-    return c;
-}
-
-
-
-void file_save(sll*p)
-{
-    if(p==0)
-    {
-        printf("No records");
-    }
-
-    FILE *f=fopen("t1.txt","w");
-
-    while(p)                                //travel or read data from all nodes till end
-    {
-        fprintf(f,"%d %s ",p->roll,p->name);//put data in file after enternig data
-        p=p->next;                         //every time move to next node
-    }
-     fclose(f);
-}
-
-
-void add_mid(sll**p)
-{
-    sll *new,*des;
+    sll *new;
     new=malloc(sizeof(sll));
-    printf("Enter rollno and name..\n");
-    scanf("%d %s",&new->roll,new->name);
+    printf("Enter rolno name and marks..\n");
+    scanf("%d%s%f",&new->roll,new->name,&new->marks);
+    
+    new->next=*ptr;
+    *ptr=new;
+}
 
-    if(*p==0   ||   (new->roll<(*p)->roll))
+void add_end(sll **ptr)
+{
+    sll *new,*last;
+    new=malloc(sizeof(sll));
+    printf("Enter rolno name and marks..\n");
+    scanf("%d%s%f",&new->roll,new->name,&new->marks);
+    new->next=0;//always
+    if(*ptr==0)
     {
-         new->next=*p;
-         *p=new;
+        *ptr=new;
     }
     else
     {
-        des=*p;
-        while((des->next!=0)&&(new->roll>des->next->roll))
+        last=*ptr;//always start from start
+        while(last->next)
+        {
+            last=last->next;
+        }
+        last->next=new;
+        
+    }
+}
+    
+void add_middle(sll**ptr)
+{
+    sll *new,*des;
+    new=malloc(sizeof(sll));
+    printf("Enter rolno name and marks..\n");
+    scanf("%d%s%f",&new->roll,new->name,&new->marks);
+    
+    /*
+    In first function call ptr is 0,so condation is true come inside and new->next=*ptr(new->next=0) and now 
+    head pointing to new node by line *ptr=new
+    
+    In second function call if the roll number of new created node is less the old node the we have to put athet 
+    node before old node.
+    
+    */
+    
+    if((*ptr==0)||(new->roll)<((*ptr)->roll))//take care of brackets
+    {
+        new->next=*ptr;
+        *ptr=new;
+    }
+    else
+    {
+        
+        /*
+        After 1st function call now only one node is created and that node next is 0.now we created new node
+        so (des->next!=0) condaction will fail because first node have next is 0.so we assign new->nxst to zero
+        (new->next=des->next) and and connect new node with previous node(des=new;)
+        
+        if we call 3rd time function and now des pointing to 1st node and it is not zero(des->next) 
+        && if roll number is grater then new node both condation is true then (des=des->next) go froword
+        till not find des=0 if it filnd 0 
+        
+        
+        
+        
+        */
+        des=*ptr;
+        if((des->next!=0)&&((new->roll)>(des->next->roll)))
         {
             des=des->next;
         }
         new->next=des->next;
-        des->next=new;
+        des=new;
     }
+}
 
+void print_node(sll*ptr)
+{
+    if(ptr==0)
+    {
+        printf("No records present..\n");
+        return;
+    }
+    while(ptr)
+    {
+        printf(" Rollno:%d Name:%s marks:%0.2f\n",ptr->roll,ptr->name,ptr->marks);
+        ptr=ptr->next;
+    }
+}
+
+int count_node(sll*ptr)
+{
+    int count=0;
+    if(ptr==0)
+    {
+        printf("No records present..\n");
+        return 0;
+    }
+    while(ptr)
+    {
+        count++;
+        ptr=ptr->next;
+    }
+    return count;
 }
 
 void read_file(sll **p)
@@ -169,10 +193,30 @@ void read_file(sll **p)
             }
             last->next=new;
         }
-
-
-
-
-
     }
+}
+
+
+
+void file_save(sll*p)
+{
+    if(p==0)
+    {
+        printf("No records");
+    }
+
+    FILE *f=fopen("t1.txt","w");
+
+    while(p)                                //travel or read data from all nodes till end
+    {
+        fprintf(f,"%d %s ",p->roll,p->name);//put data in file after enternig data
+        p=p->next;                         //every time move to next node
+    }
+     fclose(f);
+}
+
+
+void delete_node(sll**ptr)
+{
+    
 }
