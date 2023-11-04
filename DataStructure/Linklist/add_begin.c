@@ -169,10 +169,5 @@ void read_file(sll **p)
             }
             last->next=new;
         }
-
-
-
-
-
     }
 }
