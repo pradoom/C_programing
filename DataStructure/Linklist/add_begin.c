@@ -18,13 +18,14 @@ int count_node(sll*);
 void read_file(sll**);
 void file_save(sll*);
 void delete_all(sll**);
+void delete_anynode(sll**);
 int main()
 {
-    int op;
+    int op,a;
     sll *headptr=0;
     while(1)
 {
-    printf("Enter opteion 1)add_begin 2)add_end 3)add_middle 4)print 5)count_node 7)delete_all\n");
+    printf("Enter opteion 1)add_begin 2)add_end 3)add_middle 4)print 5)count_node 6)read_file 7)file_save 9)delete_all 10)delete_any\n");
     scanf("%d",&op);
     switch(op)
     {
@@ -32,11 +33,11 @@ int main()
         case 2:add_end(&headptr);break;
         case 3:add_middle(&headptr);break;
         case 4:print_node(headptr);break;
-        case 5:int a=count_node(headptr);printf("Count:%d\n",a);break;
+        case 5:a=count_node(headptr);printf("Count:%d\n",a);break;
         case 6:read_file(&headptr);break;
         case 7:file_save(headptr);break;
-        case 9:delete_all(&headptr);
-        case 10:
+        case 9:delete_all(&headptr);break;
+        case 10:delete_anynode(&headptr);break;
         case 11:
         case 12:
         case 13:
@@ -216,7 +217,85 @@ void file_save(sll*p)
 }
 
 
-void delete_node(sll**ptr)
+
+void delete_all(sll**ptr)
 {
-    
+    if(*ptr==0)
+    {
+        printf("No record found..\n");
+        return;
+    }
+
+    sll *delete=*ptr;
+
+    while(delete)
+    {
+        *ptr=delete->next;
+        free(delete);
+        delete=*ptr;
+    }
+    printf("All DATA DELETED...\n");
 }
+
+
+void delete_anynode(sll**ptr)
+{
+    if(*ptr==0)
+    {
+        printf("No records presents..\n");
+        return;
+    }
+    char name[20];
+    printf("Enter name you want to delete records..\n");
+    scanf("%s",name);
+    sll*delete=*ptr,*pre=0;
+
+
+
+
+    while(delete)
+    {
+        if((strcmp(delete->name,name)==0))
+        {
+            if(delete==*ptr)//if its first node
+            {
+                *ptr=delete->next;
+            }
+            else//if middle of last node
+            {
+                pre->next=delete->next;
+            }
+
+            free(delete);
+            //return;
+        }
+
+        pre=delete;// fallow delete one setp back
+        delete=delete->next;//visite next node;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
