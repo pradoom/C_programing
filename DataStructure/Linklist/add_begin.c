@@ -14,6 +14,7 @@ void printf_data(sll*);
 int count_node(sll*);
 void file_save(sll*);
 void add_mid(sll**);
+void read_file(sll**);
 
 
 void main()
@@ -33,7 +34,9 @@ while(1)
         case 3 : cou_node=count_node(headptr);printf(" Count = %d\n",cou_node);break;
         case 4 :file_save(headptr);break;
         case 5 :add_mid(&headptr);break;
-        case 6 :exit(0);
+        case 6 :read_file(&headptr);break;
+        case 7 :delete_all(&headptr);break;
+        case 8 :exit(0);
         default:printf("Wrong input..\n");
     }
 }
@@ -46,7 +49,7 @@ void add_begin(sll **p)
 {
     sll *new=malloc(sizeof(struct student));//point to new node
     printf("Enter rollno and name..\n");
-    scanf("%d%s",&new->roll,new->name);
+    scanf("%d %s",&new->roll,new->name);
     
     new->next=*p;//update newely created node address
 
@@ -77,7 +80,7 @@ int count_node(sll *p)
     if(p==0)
     {
         printf("No node present..\n");
-        return;
+        return 0;
     }
     int c=0;
     while(p)
@@ -132,4 +135,44 @@ void add_mid(sll**p)
         des->next=new;
     }
 
+}
+
+void read_file(sll **p)
+{
+    FILE *f=fopen("t1.txt","r");
+    if(f==0)
+    {
+        printf("No file found..\n");
+        return;
+    }
+
+    sll *last,*new;
+    while(1)
+    {
+        new=malloc(sizeof(sll));
+        if(fscanf(f,"%d %s",&new->roll,new->name)==-1)
+        {
+            break;
+        }
+
+        new->next=0;
+        if(*p==0)
+        {
+            *p=new;
+        }
+        else
+        {
+            last=*p;
+            while(last->next)
+            {
+                last=last->next;
+            }
+            last->next=new;
+        }
+
+
+
+
+
+    }
 }
