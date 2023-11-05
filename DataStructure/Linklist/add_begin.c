@@ -248,7 +248,8 @@ void delete_anynode(sll**ptr)
     char name[20];
     printf("Enter name you want to delete records..\n");
     scanf("%s",name);
-    sll*delete=*ptr,*pre=0;
+    sll*delete=*ptr;
+    sll *pre=0;
 
 
 
