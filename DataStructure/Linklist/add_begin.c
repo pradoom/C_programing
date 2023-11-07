@@ -19,6 +19,7 @@ void read_file(sll**);
 void file_save(sll*);
 void delete_all(sll**);
 void delete_anynode(sll**);
+void sort_node(sll*);
 int main()
 {
     int op,a;
@@ -38,7 +39,7 @@ int main()
         case 7:file_save(headptr);break;
         case 9:delete_all(&headptr);break;
         case 10:delete_anynode(&headptr);break;
-        case 11:
+        case 11:sort_node(headptr);break;
         case 12:
         case 13:
         case 14:exit(0);
@@ -164,7 +165,7 @@ int count_node(sll*ptr)
 
 void read_file(sll **p)
 {
-    FILE *f=fopen("t1.txt","r");
+    FILE *f=fopen("t1.txt","r+");
     if(f==0)
     {
         printf("No file found..\n");
@@ -175,7 +176,7 @@ void read_file(sll **p)
     while(1)
     {
         new=malloc(sizeof(sll));
-        if(fscanf(f,"%d %s",&new->roll,new->name)==-1)
+        if(fscanf(f,"%d %s %0.2f",&new->roll,new->name,new->marks)==-1)
         {
             break;
         }
@@ -209,8 +210,8 @@ void file_save(sll*p)
     FILE *f=fopen("t1.txt","w");
 
     while(p)                                //travel or read data from all nodes till end
-    {
-        fprintf(f,"%d %s ",p->roll,p->name);//put data in file after enternig data
+    {                     //give space there
+        fprintf(f,"%d %s %0.2f ",p->roll,p->name,p->marks);//put data in file after enternig data
         p=p->next;                         //every time move to next node
     }
      fclose(f);
@@ -277,7 +278,41 @@ void delete_anynode(sll**ptr)
 
 }
 
+void sort_node(sll*ptr)
+{
 
+
+    sll *p1=ptr,*p2,temp;
+
+
+    int i,j;
+    int c=count_node(ptr);
+    printf("count :%d\n",c);
+    for(i=0;i<c;i++)
+    {
+        p2=p1->next;
+        for(j=0;j<c-i-1;j++)
+        {
+            if((p1->roll)>(p2->roll))
+            {
+                temp.roll=p1->roll;
+                strcpy(temp.name,p1->name);
+                temp.marks=p1->marks;
+
+                p1->roll=p2->roll;
+                strcpy(p1->name,p2->name);
+                p1->marks=p2->marks;
+
+                p2->roll=temp.roll;
+                strcpy(p2->name,temp.name);
+                p2->marks=temp.marks;
+
+            }
+            p2=p2->next;
+        }
+        p1=p1->next;
+    }
+}
 
 
 
