@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct st
 {
@@ -16,12 +17,16 @@ void save_file(void);
 int count_node(void);
 void add_end(void);
 void add_middel(void);
+void task_1(void);
+void task_2(void);
+int perfect_number(int num);
+void delete_any();
 void main()
 {
     int op,c;
     while(1)
     {
-        printf("\033[32m Enter choice 1)add_begin 2)print_node 3)save_file 4)save_file 5)add_end 6)add_middel \033[0m\n");
+        printf("\033[32m Enter choice 1)add_begin 2)print_node 3)save_file 4)save_file 5)add_end 6)add_middel 7)task_1 8)task_2 9)delete_any\033[0m\n");
         scanf("%d",&op);
         switch(op)
         {
@@ -31,6 +36,9 @@ void main()
         case 4:c=count_node();printf("Count :%d",c);break;
         case 5:add_end();break;
         case 6:add_middel();break;
+        case 7:task_1();break;
+        case 8:task_2();break;
+        case 9:delete_any();break;
         default:exit(0);
         }
     }
@@ -109,7 +117,7 @@ void save_file(void)
 void add_middel(void)
 {
     //roll no less then put that node in left side if greator then put write hand side
-    struct st *new=head;
+    struct st *new;
     struct st *last;
     new=malloc(sizeof(struct st));
     printf("\033[31m Enter rollno  Name and marks..\033[0m\n");
@@ -131,5 +139,100 @@ void add_middel(void)
         }
         new->next=last->next;
         last->next=new;
+    }
+}
+
+void task_1(void)
+{
+    /*
+    If my name is present then only creat link else ask user to enter another name 
+    */
+
+    struct st *new;
+    new=malloc(sizeof(struct st));
+    printf("\033[31m Enter rollno  Name and marks..\033[0m\n");
+    scanf("%d%s%f",&new->roll,new->name,&new->marks);
+    char my_name[10]="pradoom";
+    if(strcmp(new->name,my_name)==0)
+    {
+    new->next=head;
+    head=new;
+    }
+    else
+    {
+        printf("Enter another name...\n");
+        
+    }
+
+
+}
+
+void task_2(void)
+{
+    /*
+        if the rollno is perfect then only store the number
+    */
+   int flag=0;
+   struct st *new;
+   new=malloc(sizeof(struct st));
+   printf("Enter the rollno name and marks..\n");
+   scanf("%d %s %f",&new->roll,new->name,&new->marks);
+    
+    if(perfect_number(new->roll))
+    {
+    new->next=head;
+    head=new;
+    }
+    else
+    {
+        printf("Enter rollno is not a perfect number..\n ");
+    }
+
+}
+
+int perfect_number(int num)
+{
+    int i,sum=0,flag=0;
+    for(i=1;i<num;i++)
+    {
+        if(num%i==0)
+        {
+            sum=sum+i;
+        }
+    }
+    if(sum==num)
+    {
+        flag=1;
+    }
+
+    return flag;
+}
+
+void delete_any(void)
+{
+    struct st *last=head;
+    struct st *pre;
+    int roll;
+    //printf("Enter rollno you want to delete..\n");
+    //scanf("%d",&roll);
+
+
+    printf("Enter rollno you want to delete..\n");
+    scanf("%s",&roll);
+    while(last)//till reached last node
+    {
+        if(last->roll==roll)
+        {
+            if(last==head)//if its first node
+            {
+              head=last->next;
+            }
+            else//if its middle
+            {
+                pre->next=last->next;
+            }
+        }
+        pre=last;//always prevous will fallow last one stem back
+        last=last->next;//go froword
     }
 }
