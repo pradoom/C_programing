@@ -21,12 +21,14 @@ void task_1(void);
 void task_2(void);
 int perfect_number(int num);
 void delete_any();
+void sort_data_roll();
+void sort_data_name();
 void main()
 {
     int op,c;
     while(1)
     {
-        printf("\033[32m Enter choice 1)add_begin 2)print_node 3)save_file 4)save_file 5)add_end 6)add_middel 7)task_1 8)task_2 9)delete_any\033[0m\n");
+        printf("\033[32m Enter choice 1)add_begin 2)print_node 3)save_file 4)save_file 5)add_end 6)add_middel 7)task_1 8)task_2 9)delete_any 10) sort_node\033[0m\n");
         scanf("%d",&op);
         switch(op)
         {
@@ -39,6 +41,8 @@ void main()
         case 7:task_1();break;
         case 8:task_2();break;
         case 9:delete_any();break;
+        case 10:sort_data_roll();break;
+        case 11:sort_data_name();break;
         default:exit(0);
         }
     }
@@ -213,15 +217,17 @@ void delete_any(void)
     struct st *last=head;
     struct st *pre;
     int roll;
+    char name[10];
     //printf("Enter rollno you want to delete..\n");
     //scanf("%d",&roll);
 
 
-    printf("Enter rollno you want to delete..\n");
-    scanf("%s",&roll);
+    printf("Enter name you want to delete..\n");
+    scanf("%s",&name);
     while(last)//till reached last node
     {
-        if(last->roll==roll)
+        //if(last->roll==roll)//delete by rollno
+        if(strcmp(last->name,name)==0)//delete by name
         {
             if(last==head)//if its first node
             {
@@ -232,7 +238,75 @@ void delete_any(void)
                 pre->next=last->next;
             }
         }
-        pre=last;//always prevous will fallow last one stem back
+        pre=last;//always prevous will fallow last one step back
         last=last->next;//go froword
+    }
+}
+
+
+void sort_data_roll()
+{
+    struct st *p1=head,*p2,temp;
+
+    int i,j;
+    int count=count_node();
+    for(i=0;i<count-1;i++)
+    {
+        p2=p1->next;
+        for(j=0;j<count-i-1;j++)
+        {
+            if(p1->roll>p2->roll)
+            {
+                temp.roll=p1->roll;
+                strcpy(temp.name,p1->name);
+                temp.marks=p1->marks;
+
+
+                p1->roll=p2->roll;
+                strcpy(p1->name,p2->name);
+                p1->marks=p2->marks;
+
+
+                p2->roll=temp.roll;
+                strcmp(p2->name,temp.name);
+                p2->marks=temp.marks;
+            }
+            p2=p2->next;
+        }
+        p1=p1->next;
+    }
+}
+
+//sort by name
+void sort_data_name()
+{
+    struct st *p1=head,*p2,temp;
+
+    int i,j;
+    int count=count_node();
+    for(i=0;i<count-1;i++)
+    {
+        p2=p1->next;
+        for(j=0;j<count-i-1;j++)
+        {
+            if(strcmp(p1->name,p2->name)>0)
+            {
+                temp.roll=p1->roll;
+                strcpy(temp.name,p1->name);
+                temp.marks=p1->marks;
+
+
+                p1->roll=p2->roll;
+                strcpy(p1->name,p2->name);
+                p1->marks=p2->marks;
+
+
+                p2->roll=temp.roll;
+                strcpy(p2->name,temp.name);
+                p2->marks=temp.marks;
+            }
+            p2=p2->next;
+        }
+        p1=p1->next;
     }
 }
