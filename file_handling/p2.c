@@ -2,12 +2,6 @@
 #include<stdlib.h>
 #include<string.h>
 //To count number of lines in file
-struct st
-{
-	char s[50];
-	int size;
-
-};
 void main(int argc,char**argv)
 {
 	if(argc!=2)
