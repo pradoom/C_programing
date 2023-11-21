@@ -16,7 +16,7 @@ void main(int argc,char**argv)
         char *word=argv[2];
         while((fgets(s,100,f)))
         {
-                if((strstr(s,word))==NULL)//if word match if(NULL)
+                if((strstr(s,word))==NULL)//if equal to null means word not found 
                 {
                         fprintf(temp,"%s",s);
                 }

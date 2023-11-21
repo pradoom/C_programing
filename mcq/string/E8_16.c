@@ -3,7 +3,7 @@
 int func(int arr[],int size);
 int main(void)
 {
-	int arr[10]={2,3,1,4,6,34};
+	int arr[10]={2,8,8,4,9,34};
 	printf("%d\n",func(arr,6));
 	return 0;
 }

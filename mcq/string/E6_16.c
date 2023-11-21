@@ -1,6 +1,6 @@
 /*E6.16*/
 #include<stdio.h>
-main()
+int main()
 {
 	int func(int a,int b)
 	{

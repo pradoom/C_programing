@@ -8,12 +8,12 @@ int main(void)
 	char str[100];
 	if((fp1=fopen("source.txt","r"))==NULL)
 	{
-		printf("Can’t open source file\n");
+		printf("Can't open source file\n");
 		exit(1);
 	}
 	if((fp2=fopen("dest.txt","w"))==NULL)
 	{
-		printf("Can’t open destination file\n");
+		printf("Can't open destination file\n");
 		exit(1);
 	}
 	while((fgets(str,100,fp1)) != NULL)

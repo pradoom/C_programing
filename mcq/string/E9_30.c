@@ -19,8 +19,9 @@ int *func1(void)
 }
 int *func2(void)
 {
-	int *p;
-	p=(int *)malloc(sizeof(int));
-	*p=9;
-	return p;
+	int a=77;
+	int *l=&a;
+	l=(int *)malloc(sizeof(int));
+	//*l=9;
+	return l;
 }
