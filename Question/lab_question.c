@@ -9,9 +9,8 @@ void main()
     {
         char ch=s[i];
          c=0;
-        if(ch!=' ')
-       {
-                for(j=7;j>=0;j--)
+
+                 for(j=7;j>=0;j--)
                  {
                         if(ch>>j&1)
                         {
@@ -19,7 +18,7 @@ void main()
                         }
 
                 }
-       }
+ 
 
         if(c==3)
         {
