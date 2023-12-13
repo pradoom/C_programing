@@ -16,7 +16,7 @@ int main() {
 
 
     for (i = 0; s[i]; i++) {
-        if (s[i] == ' ') 
+        if (s[i] == ' '&& s[i+1]) 
         {
             for(j=i;s[j];j++)
             {

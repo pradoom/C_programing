@@ -17,11 +17,14 @@ void prime_fun(int *p,int ele)
     {
         for(j=2;j<p[i];j++)
         {
-            if(i%j==0)
+            if(p[i]%j==0)
             break;
         }
-        if(j==i)
+        if(j==p[i])
+        {
         c++;
+        printf("%d\n",p[i]);
+        }
     }
-    printf("%d\n",c);
+    printf("c=%d\n",c);
 }

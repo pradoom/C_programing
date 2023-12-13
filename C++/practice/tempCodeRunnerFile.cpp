@@ -1,0 +1,4 @@
+    // person *operator ->()
+    // {
+    //     return ptr;
+    // }

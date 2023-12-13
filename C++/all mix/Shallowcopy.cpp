@@ -48,7 +48,7 @@ class deep
         s=new char[strlen(t.s)+1];
         strcpy(s,t.s);
         roll=new int;
-        roll=t.roll;
+        *roll=*(t.roll);
 
     }
 

@@ -10,7 +10,7 @@ int main()
 
     for(i=0;i<r;i++)
     {
-        p[i]=new int [4];
+        p[i]=new int [c];
     }
 
     for(i=0;i<r;i++)

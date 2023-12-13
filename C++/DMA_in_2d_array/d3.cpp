@@ -25,7 +25,7 @@ int main()
 
 void family::set_person(int a,int b)
 {
-    cash=a,gold=b;
+    //cash=a,gold=b;
 }
 
 

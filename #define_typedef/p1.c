@@ -1,5 +1,5 @@
 #include<stdio.h>
-//typedef int a[2];
+// typedef int a[2];
 // void main()
 // {
 //     a p;
@@ -8,7 +8,7 @@
 // }
 
 
-//-----------------------------------------------------------------//
+
 // #define int char
 // #define char float
 // #define float int
@@ -118,7 +118,15 @@
 // return 0;
 // }
 
+// int main()
+// {
+//     printf(20+"hello rao");
+// }
 
+// main()//=void main == int main
+// {
+//     printf("%ld",sizeof(main));//output same 1byte
+// }
 
 
 // #define show(value) printf (#value"=%d\n" ,value);
@@ -134,17 +142,17 @@
 
 
 
-#define MACRO(a) if(a<=5) printf(#a"=%d\n",a);
-int main(void)
-{
-int x=6, y=15;
-if (x<=y)
-MACRO(x)
-//if(x<=5) printf("=%d\n",x);
-else
-MACRO(y)
-return 0;
-}
+// #define MACRO(a) if(a<=5) printf(#a"=%d\n",a);
+// int main(void)
+// {
+// int x=6, y=15;
+// if (x<=y)
+// MACRO(x)
+// //if(x<=5) printf("=%d\n",x);
+// else
+// MACRO(y)
+// return 0;
+
 
 
 
