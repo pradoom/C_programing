@@ -31,6 +31,16 @@ class complex
         return temp;
     }
 
+
+        complex operator -(complex &t)
+    {
+        complex temp;
+        temp.real=this->real-t.real;
+        temp.img=this->img-t.img;
+
+        return temp;
+    }
+
     void get_data()
     {
         cout<<real<<" "<<img<<endl;
