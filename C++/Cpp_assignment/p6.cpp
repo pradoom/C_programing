@@ -31,11 +31,14 @@ class student
                         p[i]=new student(roll,name,marks);
                 }
         }
-
+        student(int i)
+        {
+                
+        }
         void sort_roll()
         {
                 int i,j;
-                student temp;
+                student temp(0);
                 for(i=0;i<n;i++)
                 {
                         for(j=0;j<n-i-1;j++)
