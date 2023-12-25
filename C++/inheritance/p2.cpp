@@ -99,10 +99,19 @@ int main()
     b1.get_data();
     // b1.A::get_data();//base class "A" is ambiguous
 
-    cout<<"A:"<<sizeof(A)<<endl;//4
-    cout<<"B:"<<sizeof(B)<<endl;//8
-    cout<<"C:"<<sizeof(C)<<endl;//8
-    cout<<"D:"<<sizeof(D)<<endl;//20
+    //without virtual
+    // cout<<"A:"<<sizeof(A)<<" Bytes"<<endl;//4
+    // cout<<"B:"<<sizeof(B)<<" Bytes"<<endl;//8
+    // cout<<"C:"<<sizeof(C)<<" Bytes"<<endl;//8
+    // cout<<"D:"<<sizeof(D)<<" Bytes"<<endl;//20
+
+
+    //with virtual
+    
+    cout<<"A:"<<sizeof(A)<<" Bytes"<<endl;//
+    cout<<"B:"<<sizeof(B)<<" Bytes"<<endl;//
+    cout<<"C:"<<sizeof(C)<<" Bytes"<<endl;//
+    cout<<"D:"<<sizeof(D)<<" Bytes"<<endl;//
 
 return 0;
 }
