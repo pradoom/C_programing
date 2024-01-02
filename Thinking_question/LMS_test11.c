@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define OP 33
+#define OP 13
 #if (OP == 1)
 void main()
 {
@@ -78,7 +78,7 @@ void main()
 {
     int a[5] = {1, 2, 3, 4};
     char *p;
-    p = &a + 1;
+    p = &a+1;
     // if(p-4==a+4)
     // printf("%d",p[-20]+1);
     printf("%d", *p);
@@ -91,8 +91,8 @@ void main()
 {
     char *s = "hello";
     char *n = "india";
-    char *p = n + s; // expression must have integral type
-    printf("%c" * p);
+    char *p = n - s; // expression must have integral type
+    printf("%c",*p);
 }
 
 #elif (OP == 11)

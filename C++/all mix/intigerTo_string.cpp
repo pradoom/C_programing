@@ -20,7 +20,7 @@ class A
         for(num1,c=c/10;num1>0&&count>0;num1=num1%c,c=c/10,count--)
         {
             s[i]=(num1/c+48);
-            cout<<(num1/c+48)<<endl;
+            //cout<<(num1/c+48)<<endl;
             //cout<<s[i]<<endl;
             i++;
         }
