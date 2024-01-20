@@ -27,14 +27,14 @@ class subarray
     void sub_array()
     {
         int i,j,sum=0;
-        for(i=1;i<=5;i++)
+        for(i=0;i<5;i++)
         {
-            for(j=i;j<=5;j++)
+            for(j=i;j<5;j++)
             {
-                sum=sum+arr[i];
+                sum=sum+arr[j];
                 if(sum==12)
                 {
-                    cout<<i<<" "<<j<<endl;
+                    cout<<i+1<<" "<<j+1<<endl;
                     break;
                 }
             }
